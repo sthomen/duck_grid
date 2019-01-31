@@ -1,0 +1,69 @@
+<?php
+
+define('DUCK_GRID_VERSION', '1.0');
+define('DUCK_GRID_FILE', 'public://duck_grid.css');
+
+/**
+ * Implements hook_library_info_alter()
+ *
+ * XXX
+ *
+ * Push our library to the layouts module, because backdrop's layout info files
+ * are hardcoded to load libraries only from the layout module.
+ *
+ * Issue: https://github.com/backdrop/backdrop-issues/issues/1869
+ *
+ */
+function duck_grid_library_info_alter(&$libraries, $module) {
+	if ($module == 'layout') {
+		$path = backdrop_get_path('module', 'duck_grid');
+
+		$libraries['duck-inline-block'] = array(
+			'title' => 'Duck Grid System (Inline block)',
+			'version' => DUCK_GRID_VERSION,
+			'css' => array(
+				$path . '/css/duck-inline-block.css' => array(),
+				DUCK_GRID_FILE => array()
+			)
+		);
+	}
+}
+
+/**
+ * Implements hook_menu() 
+ */
+function duck_grid_menu() {
+	return array(
+		'admin/structure/layouts/duck-grid' => array(
+			'title' => t('Duck Grid Settings'),
+			'description' => t('Settings for the Duck Grid'),
+			'page callback' => 'backdrop_get_form',
+			'page arguments' => array('duck_grid_settings_form'),
+			'access arguments' => array('administer layouts'),
+			'file' => 'duck_grid.admin.inc'
+		)
+	);
+}
+
+/**
+ * Implements hook_config_info()
+ */
+function duck_grid_config_info() {
+	return array(
+		'duck_grid.settings' => array(
+			'label' => t('Duck Grid Settings'),
+			'group' => t('Configuration')
+		)
+	);
+}
+
+function duck_grid_update_settings_css() {
+	$config = config('duck_grid.settings');
+
+	$variables = array(
+		'!max-width' => $config->get('max-width')
+	);
+
+	$cssdata=file_get_contents(backdrop_get_path('module', 'duck_grid') . '/css/settings.tpl');
+	file_unmanaged_save_data(format_string($cssdata, $variables), DUCK_GRID_FILE, FILE_EXISTS_REPLACE);
+}

@@ -1,0 +1,5 @@
+<?php
+
+function duck_grid_install() {
+	duck_grid_update_settings_css();
+}

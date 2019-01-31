@@ -1,0 +1,70 @@
+.third,
+.twothirds,
+.fourth,
+.threefourths,
+.fifth,
+.sixth {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 -0.25rem 0 0;
+}
+
+/**
+ * Mobile
+ */
+@media all and (max-width: 581px) {
+	.third,
+	.twothirds,
+	.fourth,
+	.threefourths,
+	.fifth,
+	.sixth {
+		width: 100%;
+	}
+}
+
+/**
+ * Tablet
+ */
+@media all and (min-width: 582px) and (max-width: 1024px) {
+	.third,
+	.twothirds,
+	.fourth,
+	.threefourths {
+		width: 50%;
+	}
+
+	.fifth,
+	.sixth {
+		width: 33.333%;
+	}
+}
+
+/**
+ * Desktop
+ */
+@media all and (min-width: 1025px) {
+	.third {
+		width: 33.333%;
+	}
+
+	.twothirds {
+		width: 66.666%;
+	}
+
+	.fourth {
+		width: 25%;
+	}
+
+	.threefourths {
+		width: 75%;
+	}
+
+	.fifth {
+		width: 20%;
+	}
+
+	.sixth {
+		width: 16.666%;
+	}
+}
