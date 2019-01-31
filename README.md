@@ -16,6 +16,7 @@ of positioning them responsively.
 
 ### Basic classes
 
+- half
 - third
 - fourth
 - fifth
@@ -27,9 +28,10 @@ of positioning them responsively.
 - threefourths
 
 There are (for now) fixed breakpoints. At 581px or less, all elements are set
-to be 100% wide. At 582-1024px width, third, twothirds, fourth and threefourths
-are set to 50% while fith and sixth are set to 33.333%. At 1024px or higher,
-the name represents the percentage, so this grid is essentially desktop-first.
+to be 100% wide. At 582-1024px width, half, third, twothirds, fourth and
+threefourths are set to 50% while fith and sixth are set to 33.333%. At 1024px
+or higher, the name represents the percentage, so this grid is essentially
+desktop-first.
 
 All elements are by default aligned top, with a negative right margin of
 0.25rem which is the only caveat in the whole thing.
