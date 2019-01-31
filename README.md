@@ -1,9 +1,9 @@
 # Duck Grid
 
-I am a very stubborn person and I do not like bootstrap.
+I am a very stubborn person and I do not like backdrop.
 
-This module provides a simple backdrop library with an easy-to-use grid system
-that is based on inline-block.
+This [backdrop](https://backdropcms.org) module provides a simple backdrop
+library with an easy-to-use grid system that is based on inline-block.
 
 The advantage to this approach it does not require a huge library and it also
 does not need a wrapping element (.row).
